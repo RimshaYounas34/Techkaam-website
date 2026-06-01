@@ -22,8 +22,7 @@ import TaxIntegration from "./pages/services/TaxIntegration";
 import Scada from "./pages/services/Scada";
 import WebDev from "./pages/services/WebDev";
 import AppDev from "./pages/services/AppDev";
-import APIIntegration from "./pages/services/APIIntegration";
-
+import ApiIntegration from "./pages/services/ApiIntegration";
 function App() {
   return (
     <BrowserRouter>
@@ -54,8 +53,8 @@ function App() {
         <Route path="/app-development" element={<AppDev />} />
 
         {/* API Integration Pages */}
-        <Route path="/whatsapp-api" element={<APIIntegration />} />
-        <Route path="/email-api" element={<APIIntegration />} />
+        <Route path="/whatsapp-api" element={<ApiIntegration />} />
+<Route path="/email-api" element={<ApiIntegration />} />
 
       </Routes>
 
