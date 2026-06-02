@@ -23,9 +23,12 @@ import Scada from "./pages/services/Scada";
 import WebDev from "./pages/services/WebDev";
 import AppDev from "./pages/services/AppDev";
 import ApiIntegration from "./pages/services/ApiIntegration";
+import ScrollToTop from "./components/ScrollToTop";
 function App() {
   return (
     <BrowserRouter>
+    <ScrollToTop />
+
       <Navbar />
 
       <Routes>
