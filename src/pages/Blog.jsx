@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import blog1 from "../assets/blog1.jpg";
-import blog2 from "../assets/blog2.png";
-import blog3 from "../assets/blog3.jpg";
-import blog4 from "../assets/blog4.jpg";
-import blog5 from "../assets/blog5.jpg";
-import blog6 from "../assets/blog6.jpg";
-import blog7 from "../assets/blog7.jpg";
+import blog1 from "../assets/Blog1.jpg";
+import blog2 from "../assets/Blog2.png";
+import blog3 from "../assets/Blog3.jpg";
+import blog4 from "../assets/Blog4.jpg";
+import blog5 from "../assets/Blog5.jpg";
+import blog6 from "../assets/Blog6.jpg";
+import blog7 from "../assets/Blog7.jpg";
 
 
 const blogs = [
