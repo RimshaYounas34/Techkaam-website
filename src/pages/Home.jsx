@@ -123,7 +123,6 @@ const testimonials = [
   },
 ];
 
-
 function Home() {
   const form = useRef();
 
@@ -343,79 +342,70 @@ function Home() {
           </Link>
         </div>
       </section>
-{/* Testimonials */}
-<section className="bg-slate-50 py-24">
-  <div className="max-w-7xl mx-auto px-6">
+      {/* Testimonials */}
+      <section className="bg-slate-50 py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="text-blue-600 font-semibold uppercase tracking-widest">
+              Testimonials
+            </span>
 
-    <div className="text-center mb-16">
-      <span className="text-blue-600 font-semibold uppercase tracking-widest">
-        Testimonials
-      </span>
+            <h2 className="text-5xl font-bold text-slate-900 mt-3">
+              What Our Clients Say
+            </h2>
 
-      <h2 className="text-5xl font-bold text-slate-900 mt-3">
-        What Our Clients Say
-      </h2>
-
-      <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
-        Discover why businesses trust TeachKaam for ERP, POS, Web Development,
-        Mobile Applications and Digital Solutions.
-      </p>
-    </div>
-
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-
-      {testimonials.map((t, index) => (
-        <div
-          key={index}
-          className="relative bg-white rounded-[30px] p-8 shadow-lg hover:shadow-2xl hover:-translate-y-3 transition duration-500"
-        >
-
-          {/* Quote Icon */}
-          <div className="absolute top-6 right-6 text-6xl text-blue-100 font-bold">
-            "
-          </div>
-
-          {/* Client Image */}
-          <div className="flex justify-center mb-6">
-            <img
-              src={t.image}
-              alt={t.name}
-              className="w-24 h-24 rounded-full object-cover border-[6px] border-blue-100 shadow-lg"
-            />
-          </div>
-
-          {/* Stars */}
-          <div className="flex justify-center text-yellow-400 text-xl mb-5">
-            ★★★★★
-          </div>
-
-          {/* Review */}
-          <p className="text-gray-600 text-center leading-8 italic min-h-[140px]">
-            {t.quote}
-          </p>
-
-          {/* Divider */}
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 mx-auto my-6 rounded-full"></div>
-
-          {/* Client Info */}
-          <div className="text-center">
-            <h3 className="font-bold text-slate-900 text-lg">
-              {t.name}
-            </h3>
-
-            <p className="text-blue-600 font-medium text-sm">
-              {t.company}
+            <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+              Discover why businesses trust TeachKaam for ERP, POS, Web
+              Development, Mobile Applications and Digital Solutions.
             </p>
           </div>
 
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {testimonials.map((t, index) => (
+              <div
+                key={index}
+                className="relative bg-white rounded-[30px] p-8 shadow-lg hover:shadow-2xl hover:-translate-y-3 transition duration-500"
+              >
+                {/* Quote Icon */}
+                <div className="absolute top-6 right-6 text-6xl text-blue-100 font-bold">
+                  "
+                </div>
+
+                {/* Client Image */}
+                <div className="flex justify-center mb-6">
+                  <img
+                    src={t.image}
+                    alt={t.name}
+                    className="w-24 h-24 rounded-full object-cover border-[6px] border-blue-100 shadow-lg"
+                  />
+                </div>
+
+                {/* Stars */}
+                <div className="flex justify-center text-yellow-400 text-xl mb-5">
+                  ★★★★★
+                </div>
+
+                {/* Review */}
+                <p className="text-gray-600 text-center leading-8 italic min-h-[140px]">
+                  {t.quote}
+                </p>
+
+                {/* Divider */}
+                <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 mx-auto my-6 rounded-full"></div>
+
+                {/* Client Info */}
+                <div className="text-center">
+                  <h3 className="font-bold text-slate-900 text-lg">{t.name}</h3>
+
+                  <p className="text-blue-600 font-medium text-sm">
+                    {t.company}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-      ))}
-
-    </div>
-  </div>
-</section>
-     
-
+      </section>
 
       {/* Portfolio preview */}
       <section className="bg-gray-50 py-20">
@@ -458,82 +448,70 @@ function Home() {
             ))}
           </div>
           <div className="text-center mt-10">
-            <Link
+             <Link
               to="/portfolio"
-              className="text-brand-600 font-semibold hover:underline"
+              className="bg-[#0F2E74] text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-900 transition"
             >
-              View full portfolio →
+            View All Portfolio 
             </Link>
           </div>
         </div>
       </section>
 
       {/* Blog */}
-<section className="bg-gray-50 py-24">
-  <div className="max-w-7xl mx-auto px-6">
-
-    <div className="text-center mb-16">
-      <h2 className="text-4xl font-bold text-slate-900">
-        Our Recent Blogs
-      </h2>
-      <p className="text-gray-600 mt-3">
-        Learn from TeachKaam experts
-      </p>
-    </div>
-
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-
-      {blogPosts.map((post, index) => (
-        <div
-          key={index}
-          className="bg-white rounded-2xl overflow-hidden shadow-lg border hover:shadow-2xl hover:-translate-y-2 transition duration-300 flex flex-col"
-        >
-
-          {/* IMAGE */}
-          <div className="h-52 overflow-hidden">
-            <img
-              src={post.image}
-              alt={post.title}
-              className="w-full h-full object-cover hover:scale-110 transition duration-500"
-            />
+      <section className="bg-gray-50 py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-slate-900">
+              Our Recent Blogs
+            </h2>
+            <p className="text-gray-600 mt-3">Learn from TeachKaam experts</p>
           </div>
 
-          {/* CONTENT */}
-          <div className="p-6 flex flex-col flex-grow">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {blogPosts.map((post, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-2xl overflow-hidden shadow-lg border hover:shadow-2xl hover:-translate-y-2 transition duration-300 flex flex-col"
+              >
+                {/* IMAGE */}
+                <div className="h-52 overflow-hidden">
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="w-full h-full object-cover hover:scale-110 transition duration-500"
+                  />
+                </div>
 
-            <p className="text-sm text-gray-500 mb-2">
-              {post.date}
-            </p>
+                {/* CONTENT */}
+                <div className="p-6 flex flex-col flex-grow">
+                  <p className="text-sm text-gray-500 mb-2">{post.date}</p>
 
-            <h3 className="text-xl font-bold text-slate-800 mb-3">
-              {post.title}
-            </h3>
+                  <h3 className="text-xl font-bold text-slate-800 mb-3">
+                    {post.title}
+                  </h3>
 
+                  <Link
+                    to={post.link}
+                    className="mt-4 text-blue-700 font-semibold hover:underline"
+                  >
+                    Read More →
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
             <Link
-              to={post.link}
-              className="mt-4 text-blue-700 font-semibold hover:underline"
+              to="/blog"
+              className="bg-[#0F2E74] text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-900 transition"
             >
-              Read More →
+              View All Blogs
             </Link>
-
           </div>
-
         </div>
-      ))}
-
-    </div>
-
-    <div className="text-center mt-12">
-      <Link
-        to="/blog"
-        className="bg-[#0F2E74] text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-900 transition"
-      >
-        View All Blogs
-      </Link>
-    </div>
-
-  </div>
-</section>
+      </section>
 
       {/* Contact */}
       <section className="bg-gray-50 py-20" id="contact">
