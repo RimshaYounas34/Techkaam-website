@@ -3,6 +3,35 @@ import heroImg from "../assets/hero.png";
 import ecomImg from "../assets/ecom.jpg";
 import webImg from "../assets/web.webp";
 import portImg from "../assets/port.jpg";
+import { useRef } from "react";
+import emailjs from "@emailjs/browser";
+import blog1 from "../assets/Blog1.jpg";
+import blog2 from "../assets/Blog2.png";
+import blog3 from "../assets/Blog3.jpg";
+import client1 from "../assets/client1.webp";
+import client2 from "../assets/client2.jpg";
+import client3 from "../assets/client3.jpg";
+
+const blogPosts = [
+  {
+    title: "Why AI-Powered ERP is the Future of Industry",
+    date: "June 2026",
+    link: "/blog",
+    image: blog1,
+  },
+  {
+    title: "FBR POS Integration Explained",
+    date: "May 2026",
+    link: "/blog",
+    image: blog2,
+  },
+  {
+    title: "Cloud POS vs Traditional POS",
+    date: "April 2026",
+    link: "/blog",
+    image: blog3,
+  },
+];
 
 const restaurantFeatures = [
   "AI Automation",
@@ -72,41 +101,53 @@ const integrations = [
 
 const testimonials = [
   {
+    name: "Fatima Noor",
+    company: "Retail Store Owner",
+    image: client1,
     quote:
-      "TeachKaam delivered an excellent ERP solution. Centralized management and reliable support made a real difference for our operations.",
-    company: "Industrial Client",
+      "TeachKaam provided us with an outstanding POS solution that streamlined our daily operations and improved customer experience.",
   },
   {
+    name: "Muhammad Ali",
+    company: "Manufacturing Company",
+    image: client2,
     quote:
-      "Their FBR POS integration helped us scale smoothly. Sales tracking, inventory and compliance are all in one place now.",
-    company: "Retail Business",
+      "The ERP system developed by TeachKaam transformed our inventory and production management with excellent support.",
   },
   {
+    name: "Zainab Malik",
+    company: "E-Commerce Business",
+    image: client3,
     quote:
-      "Professional team with great communication. Our web platform was delivered on time with outstanding quality.",
-    company: "Digital Agency Partner",
+      "Professional team, modern design and exceptional development services. Highly recommended for growing businesses.",
   },
 ];
 
-const blogPosts = [
-  {
-    title: "Why AI-Powered ERP Matters for Industry",
-    date: "May 15, 2026",
-    link: "/blog",
-  },
-  {
-    title: "FBR & POS Integration: What Businesses Should Know",
-    date: "May 8, 2026",
-    link: "/blog",
-  },
-  {
-    title: "Building Modern Web Apps with the MERN Stack",
-    date: "April 28, 2026",
-    link: "/blog",
-  },
-];
 
 function Home() {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_teachkaam",
+        "template_c148xlg",
+        form.current,
+        "vARhTg6jI9rtgLq_K",
+      )
+      .then(
+        () => {
+          alert("Message sent successfully!");
+          form.current.reset();
+        },
+        (error) => {
+          alert("Failed to send message.");
+          console.log(error);
+        },
+      );
+  };
   return (
     <>
       {/* Hero — CISePOS-style navy gradient */}
@@ -302,33 +343,79 @@ function Home() {
           </Link>
         </div>
       </section>
+{/* Testimonials */}
+<section className="bg-slate-50 py-24">
+  <div className="max-w-7xl mx-auto px-6">
 
-      {/* Testimonials */}
-      <section className="bg-white py-20">
-        <div className="max-w-7xl mx-auto px-8">
-          <h2 className="text-3xl font-bold text-center text-slate-800 mb-2">
-            What Clients Say About Us
-          </h2>
-          <p className="text-center text-gray-600 mb-12">
-            We love hearing from our clients — their feedback keeps us going.
+    <div className="text-center mb-16">
+      <span className="text-blue-600 font-semibold uppercase tracking-widest">
+        Testimonials
+      </span>
+
+      <h2 className="text-5xl font-bold text-slate-900 mt-3">
+        What Our Clients Say
+      </h2>
+
+      <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+        Discover why businesses trust TeachKaam for ERP, POS, Web Development,
+        Mobile Applications and Digital Solutions.
+      </p>
+    </div>
+
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+      {testimonials.map((t, index) => (
+        <div
+          key={index}
+          className="relative bg-white rounded-[30px] p-8 shadow-lg hover:shadow-2xl hover:-translate-y-3 transition duration-500"
+        >
+
+          {/* Quote Icon */}
+          <div className="absolute top-6 right-6 text-6xl text-blue-100 font-bold">
+            "
+          </div>
+
+          {/* Client Image */}
+          <div className="flex justify-center mb-6">
+            <img
+              src={t.image}
+              alt={t.name}
+              className="w-24 h-24 rounded-full object-cover border-[6px] border-blue-100 shadow-lg"
+            />
+          </div>
+
+          {/* Stars */}
+          <div className="flex justify-center text-yellow-400 text-xl mb-5">
+            ★★★★★
+          </div>
+
+          {/* Review */}
+          <p className="text-gray-600 text-center leading-8 italic min-h-[140px]">
+            {t.quote}
           </p>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((t) => (
-              <div
-                key={t.company}
-                className="bg-gray-50 border border-gray-200 rounded-xl p-8"
-              >
-                <p className="text-5xl text-brand-600 leading-none mb-4">
-                  &ldquo;
-                </p>
-                <p className="text-gray-700 mb-6 italic">{t.quote}</p>
-                <p className="font-bold text-brand-700">{t.company}</p>
-              </div>
-            ))}
+          {/* Divider */}
+          <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 mx-auto my-6 rounded-full"></div>
+
+          {/* Client Info */}
+          <div className="text-center">
+            <h3 className="font-bold text-slate-900 text-lg">
+              {t.name}
+            </h3>
+
+            <p className="text-blue-600 font-medium text-sm">
+              {t.company}
+            </p>
           </div>
+
         </div>
-      </section>
+      ))}
+
+    </div>
+  </div>
+</section>
+     
+
 
       {/* Portfolio preview */}
       <section className="bg-gray-50 py-20">
@@ -382,30 +469,71 @@ function Home() {
       </section>
 
       {/* Blog */}
-      <section className="bg-white py-20">
-        <div className="max-w-7xl mx-auto px-8">
-          <h2 className="text-3xl font-bold text-center text-slate-800 mb-12">
-            Our Recent Blogs
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {blogPosts.map((post) => (
-              <article
-                key={post.title}
-                className="border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition"
-              >
-                <div className="h-40 bg-gradient-to-br from-brand-700 to-brand-500" />
-                <div className="p-6">
-                  <p className="text-sm text-gray-500 mb-2">{post.date}</p>
-                  <h3 className="font-bold text-lg mb-3">{post.title}</h3>
-                  <Link to={post.link} className="text-brand-600 font-semibold">
-                    Read more →
-                  </Link>
-                </div>
-              </article>
-            ))}
+<section className="bg-gray-50 py-24">
+  <div className="max-w-7xl mx-auto px-6">
+
+    <div className="text-center mb-16">
+      <h2 className="text-4xl font-bold text-slate-900">
+        Our Recent Blogs
+      </h2>
+      <p className="text-gray-600 mt-3">
+        Learn from TeachKaam experts
+      </p>
+    </div>
+
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+      {blogPosts.map((post, index) => (
+        <div
+          key={index}
+          className="bg-white rounded-2xl overflow-hidden shadow-lg border hover:shadow-2xl hover:-translate-y-2 transition duration-300 flex flex-col"
+        >
+
+          {/* IMAGE */}
+          <div className="h-52 overflow-hidden">
+            <img
+              src={post.image}
+              alt={post.title}
+              className="w-full h-full object-cover hover:scale-110 transition duration-500"
+            />
           </div>
+
+          {/* CONTENT */}
+          <div className="p-6 flex flex-col flex-grow">
+
+            <p className="text-sm text-gray-500 mb-2">
+              {post.date}
+            </p>
+
+            <h3 className="text-xl font-bold text-slate-800 mb-3">
+              {post.title}
+            </h3>
+
+            <Link
+              to={post.link}
+              className="mt-4 text-blue-700 font-semibold hover:underline"
+            >
+              Read More →
+            </Link>
+
+          </div>
+
         </div>
-      </section>
+      ))}
+
+    </div>
+
+    <div className="text-center mt-12">
+      <Link
+        to="/blog"
+        className="bg-[#0F2E74] text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-900 transition"
+      >
+        View All Blogs
+      </Link>
+    </div>
+
+  </div>
+</section>
 
       {/* Contact */}
       <section className="bg-gray-50 py-20" id="contact">
@@ -417,41 +545,62 @@ function Home() {
             Fill in the form below and our team will get back to you shortly.
           </p>
 
-          <form className="bg-white p-8 rounded-xl shadow-lg border border-gray-200 space-y-4">
+          <form
+            ref={form}
+            onSubmit={sendEmail}
+            className="bg-white p-8 rounded-xl shadow-lg border border-gray-200 space-y-4"
+          >
+            {" "}
             <div className="grid md:grid-cols-2 gap-4">
               <input
                 type="text"
+                name="name"
                 placeholder="Name"
                 className="border border-gray-300 rounded-lg px-4 py-3 w-full focus:outline-none focus:border-brand-600"
               />
               <input
                 type="email"
+                name="email"
                 placeholder="Email"
                 className="border border-gray-300 rounded-lg px-4 py-3 w-full focus:outline-none focus:border-brand-600"
               />
             </div>
             <input
               type="text"
+              name="phone"
               placeholder="Phone"
               className="border border-gray-300 rounded-lg px-4 py-3 w-full focus:outline-none focus:border-brand-600"
             />
             <input
               type="text"
+              name="text"
               placeholder="My message is about"
               className="border border-gray-300 rounded-lg px-4 py-3 w-full focus:outline-none focus:border-brand-600"
             />
             <textarea
               rows="4"
+              name="message"
               placeholder="Describe your project"
               className="border border-gray-300 rounded-lg px-4 py-3 w-full focus:outline-none focus:border-brand-600"
             />
             <button
-              type="button"
+              type="submit"
               className="w-full bg-brand-600 text-white py-3 rounded-lg font-semibold hover:bg-brand-700 transition"
             >
               Send Message
             </button>
           </form>
+          {/* WhatsApp Button */}
+          <div className="text-center mt-8">
+            <a
+              href="https://wa.me/923111734194?text=Hello%20TeachKaam,%20I%20need%20information%20about%20your%20services."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-green-500 text-white px-8 py-4 rounded-xl font-semibold hover:bg-green-600 transition shadow-lg"
+            >
+              Chat on WhatsApp
+            </a>
+          </div>
         </div>
       </section>
 
