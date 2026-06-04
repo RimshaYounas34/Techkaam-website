@@ -29,9 +29,10 @@ function Navbar() {
   return (
     <header className="fixed top-0 left-0 w-full z-50">
 
-      {/* Top Bar (hidden on mobile) */}
+      {/* TOP BAR */}
       <div className="bg-black text-white text-sm hidden md:block">
         <div className="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
+
           <div className="flex items-center gap-3 text-gray-400">
             {socialLinks.map(({ href, label, Icon }) => (
               <a key={label} href={href} target="_blank" rel="noopener noreferrer">
@@ -50,22 +51,24 @@ function Navbar() {
               <span>Call</span>
             </a>
           </div>
+
         </div>
       </div>
 
-      {/* Main Nav */}
+      {/* MAIN NAV */}
       <nav className="bg-white shadow-md border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
 
+          {/* Logo */}
           <Logo variant="dark" />
 
-          {/* Desktop Menu */}
+          {/* DESKTOP MENU */}
           <div className="hidden lg:flex items-center gap-7">
 
             <Link to="/" className={navLink}>Home</Link>
             <Link to="/about" className={navLink}>Why TeachKaam</Link>
 
-            {/* Services Dropdown */}
+            {/* SERVICES */}
             <div
               className="relative"
               onMouseEnter={() => setShowServices(true)}
@@ -77,7 +80,8 @@ function Navbar() {
 
               {showServices && (
                 <div className="absolute top-full left-0 w-96 bg-white border rounded-lg shadow-xl p-5 z-[9999]">
-                  <ul className="space-y-3 text-sm">
+                  <ul className="space-y-3 text-sm text-slate-700">
+
                     <li><Link to="/pos-system">Cloud POS System</Link></li>
                     <li><Link to="/fbr-integration">FBR Integration</Link></li>
                     <li><Link to="/pra-integration">PRA Integration</Link></li>
@@ -88,6 +92,7 @@ function Navbar() {
                     <li><Link to="/app-development">App Development</Link></li>
                     <li><Link to="/whatsapp-api">WhatsApp API Integration</Link></li>
                     <li><Link to="/email-api">Email API Integration</Link></li>
+
                   </ul>
                 </div>
               )}
@@ -104,19 +109,22 @@ function Navbar() {
             >
               Free Consultation
             </Link>
+
           </div>
 
-          {/* Mobile Menu Icon */}
-          <div className="lg:hidden text-3xl cursor-pointer"
+          {/* MOBILE ICON */}
+          <div
+            className="lg:hidden text-3xl cursor-pointer"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
             {mobileOpen ? <HiX /> : <HiOutlineMenu />}
           </div>
+
         </div>
 
-        {/* Mobile Menu */}
+        {/* MOBILE MENU */}
         {mobileOpen && (
-          <div className="lg:hidden bg-white border-t px-6 py-4 space-y-4">
+          <div className="lg:hidden bg-white border-t px-6 py-5 flex flex-col gap-4 text-slate-700 font-medium">
 
             <Link onClick={() => setMobileOpen(false)} to="/">Home</Link>
             <Link onClick={() => setMobileOpen(false)} to="/about">Why TeachKaam</Link>
@@ -129,12 +137,14 @@ function Navbar() {
             <Link
               to="/try-now"
               onClick={() => setMobileOpen(false)}
-              className="block bg-brand-700 text-white px-4 py-2 rounded text-center"
+              className="bg-brand-700 text-white px-4 py-2 rounded text-center"
             >
               Free Consultation
             </Link>
+
           </div>
         )}
+
       </nav>
     </header>
   );
