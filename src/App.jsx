@@ -24,6 +24,7 @@ import WebDev from "./pages/services/WebDev";
 import AppDev from "./pages/services/AppDev";
 import ApiIntegration from "./pages/services/ApiIntegration";
 import ScrollToTop from "./components/ScrollToTop";
+import WhatsAppButton from "./components/WhatsAppButton";
 function App() {
   return (
     <BrowserRouter>
@@ -62,6 +63,7 @@ function App() {
       </Routes>
 
       <Footer />
+      <WhatsAppButton />
     </BrowserRouter>
   );
 }
