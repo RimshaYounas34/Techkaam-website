@@ -156,7 +156,7 @@ function Home() {
             Pakistan&apos;s Leading Software Solutions Partner
           </h1>
           <p className="text-lg text-blue-100 leading-relaxed mb-8">
-            TeachKaam is a leading software solutions company in Pakistan,
+            TechKaam is a leading software solutions company in Pakistan,
             delivering innovative ERP systems, POS solutions, FBR integrations,
             industrial automation, web development, and mobile applications. We
             help businesses streamline operations, improve productivity, and
@@ -174,7 +174,7 @@ function Home() {
         <div className="max-w-4xl mx-auto px-8 flex justify-center pb-4">
           <img
             src={heroImg}
-            alt="TeachKaam software dashboard"
+            alt="TechKaam software dashboard"
             className="w-auto max-w-full max-h-[220px] sm:max-h-[260px] md:max-h-[300px] object-contain drop-shadow-2xl"
           />
         </div>
@@ -201,7 +201,7 @@ function Home() {
             Software Solutions Provider in Pakistan
           </h2>
           <p className="text-gray-600 text-lg leading-relaxed">
-            At TeachKaam, we empower businesses with smart software solutions
+            At TechKaam, we empower businesses with smart software solutions
             designed to simplify complex operations. From retail stores and
             restaurants to manufacturing industries and startups, our team
             develops customized ERP, POS, automation, web, and mobile solutions
@@ -216,10 +216,10 @@ function Home() {
         <div className="max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-3xl font-bold text-slate-800 mb-4">
-              TeachKaam Industrial ERP AI System
+              TechKaam Industrial ERP AI System
             </h2>
             <p className="text-gray-600 mb-6 leading-relaxed">
-              TeachKaam's AI-powered Industrial ERP system helps manufacturers
+              TechKaam's AI-powered Industrial ERP system helps manufacturers
               and enterprises manage production, inventory, procurement, HR, and
               finance through a single intelligent platform. Gain real-time
               insights, automate workflows, and improve operational efficiency
@@ -293,7 +293,7 @@ function Home() {
       <section className="bg-gray-50 py-20">
         <div className="max-w-7xl mx-auto px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-slate-800 mb-4">
-            TeachKaam Integrations & Modules
+            TechKaam Integrations & Modules
           </h2>
           <p className="text-center text-gray-600 max-w-3xl mx-auto mb-14">
             Cutting-edge modules to streamline operations, optimize stock, and
@@ -329,7 +329,7 @@ function Home() {
             One-stop Solution for All Your Business Operations
           </h2>
           <p className="text-blue-100 mb-8">
-            TeachKaam provides a complete ecosystem of software solutions
+            TechKaam provides a complete ecosystem of software solutions
             including ERP, POS, FBR Integration, SCADA Systems, Web Development,
             Mobile Apps, and Business Automation Tools — everything your
             organization needs to operate efficiently and scale successfully.
@@ -355,7 +355,7 @@ function Home() {
             </h2>
 
             <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
-              Discover why businesses trust TeachKaam for ERP, POS, Web
+              Discover why businesses trust TechKaam for ERP, POS, Web
               Development, Mobile Applications and Digital Solutions.
             </p>
           </div>
@@ -465,7 +465,7 @@ function Home() {
             <h2 className="text-4xl font-bold text-slate-900">
               Our Recent Blogs
             </h2>
-            <p className="text-gray-600 mt-3">Learn from TeachKaam experts</p>
+            <p className="text-gray-600 mt-3">Learn from TechKaam experts</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -628,7 +628,7 @@ function Home() {
             Trusted by Businesses Across Pakistan
           </h2>
           <p className="text-gray-600 mb-8">
-            Trusted by businesses across Pakistan, TeachKaam delivers technology
+            Trusted by businesses across Pakistan, TechKaam delivers technology
             solutions that improve efficiency, reduce operational costs, and
             support digital growth. Our commitment to innovation and customer
             success makes us a reliable technology partner for organizations of

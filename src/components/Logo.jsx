@@ -42,7 +42,7 @@ function Logo({ variant = "dark", showText = true, compact = false, className = 
           compact ? "text-lg" : "text-xl"
         } ${isLight ? "text-white" : "text-slate-800"}`}
       >
-        Teach<span className={isLight ? "text-blue-300" : "text-brand-600"}>Kaam</span>
+        Tech<span className={isLight ? "text-blue-300" : "text-brand-600"}>Kaam</span>
       </span>
       {!compact && (
         <span

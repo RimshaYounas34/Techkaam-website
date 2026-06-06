@@ -66,7 +66,7 @@ function Navbar() {
           <div className="hidden lg:flex items-center gap-7">
 
             <Link to="/" className={navLink}>Home</Link>
-            <Link to="/about" className={navLink}>Why TeachKaam</Link>
+            <Link to="/about" className={navLink}>Why TechKaam</Link>
 
             {/* SERVICES */}
             <div

@@ -21,7 +21,7 @@ function Footer() {
             <ul className="space-y-2 text-gray-400 text-sm">
               <li>
                 <Link to="/about" className="hover:text-white">
-                  Why TeachKaam
+                  Why TechKaam
                 </Link>
               </li>
               <li>
@@ -87,7 +87,7 @@ function Footer() {
             <h4 className="font-bold mb-4">Contact Us</h4>
             <ul className="space-y-2 text-gray-400 text-sm">
               <li>info@teachkaam.com</li>
-              <li>+92 300 1234567</li>
+              <li>+92 3111734194</li>
               <li>Faisalabad, Pakistan</li>
             </ul>
           </div>
