@@ -27,7 +27,7 @@ function AdminDashboard() {
       const token = localStorage.getItem("token");
 
       const res = await fetch(
-        "http://localhost:5000/api/admin/messages",
+        "https://techkaam-website-production.up.railway.app/api/admin/messages",
         {
           headers: {
             Authorization: `Bearer ${token}`,
