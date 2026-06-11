@@ -23,13 +23,12 @@ function AdminLogin() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({ email, password }),
-        }
+        },
       );
 
       const data = await res.json();
 
-      console.log("LOGIN RESPONSE:", data); // 🔥 DEBUG
-
+      console.log("LOGIN RESPONSE:", JSON.stringify(data, null, 2));
       if (data.success && data.token) {
         // 🔐 CLEAN OLD TOKEN FIRST
         localStorage.removeItem("token");

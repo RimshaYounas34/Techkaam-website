@@ -20,7 +20,6 @@ function Contact() {
     });
   };
 
-  // VALIDATION
   const validateForm = () => {
     const nameRegex = /^[a-zA-Z\s]+$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -45,7 +44,6 @@ function Contact() {
     return "";
   };
 
-  // SUBMIT
   const sendEmail = async (e) => {
     e.preventDefault();
 
@@ -61,19 +59,23 @@ function Contact() {
 
     try {
       const res = await fetch(
-  "https://techkaam-website-production.up.railway.app/api/contact",
-  {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(formData),
-  }
-);
+        "https://techkaam-website-production.up.railway.app/api/contact",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
       const data = await res.json();
 
-      if (data.success) {
+      console.log("CONTACT RESPONSE:", data); // 🔥 DEBUG
+
+      if (data?.success === true) {
         setSuccess("Message sent successfully ✔");
+        setError("");
 
         setFormData({
           name: "",
@@ -83,9 +85,11 @@ function Contact() {
           message: "",
         });
       } else {
-        setError("Failed to send message ❌");
+        setSuccess("");
+        setError(data?.message || "Failed to send message ❌");
       }
     } catch (err) {
+      setSuccess("");
       setError("Server error ❌");
     }
 
@@ -103,24 +107,22 @@ function Contact() {
           ERP, POS, FBR Integration ke liye message send karein
         </p>
 
-        {/* ERROR */}
         {error && (
-          <p className="text-red-600 text-center mb-4 font-semibold">{error}</p>
+          <p className="text-red-600 text-center mb-4 font-semibold">
+            {error}
+          </p>
         )}
 
-        {/* SUCCESS */}
         {success && (
           <p className="text-green-600 text-center mb-4 font-semibold">
             {success}
           </p>
         )}
 
-        {/* FORM */}
         <form
           onSubmit={sendEmail}
           className="bg-white p-8 rounded-xl shadow-lg border border-gray-200 space-y-4"
         >
-          {/* NAME */}
           <input
             type="text"
             name="name"
@@ -130,7 +132,6 @@ function Contact() {
             className="border border-gray-300 rounded-lg px-4 py-3 w-full"
           />
 
-          {/* EMAIL */}
           <input
             type="email"
             name="email"
@@ -140,7 +141,6 @@ function Contact() {
             className="border border-gray-300 rounded-lg px-4 py-3 w-full"
           />
 
-          {/* PHONE */}
           <input
             type="text"
             name="phone"
@@ -150,7 +150,6 @@ function Contact() {
             className="border border-gray-300 rounded-lg px-4 py-3 w-full"
           />
 
-          {/* SUBJECT */}
           <input
             type="text"
             name="subject"
@@ -160,7 +159,6 @@ function Contact() {
             className="border border-gray-300 rounded-lg px-4 py-3 w-full"
           />
 
-          {/* MESSAGE */}
           <textarea
             rows="5"
             name="message"
@@ -170,7 +168,6 @@ function Contact() {
             className="border border-gray-300 rounded-lg px-4 py-3 w-full"
           ></textarea>
 
-          {/* BUTTON */}
           <button
             type="submit"
             disabled={loading}

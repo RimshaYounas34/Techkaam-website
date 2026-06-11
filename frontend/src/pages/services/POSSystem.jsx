@@ -33,7 +33,7 @@ function POSSystem() {
     {
       icon: <Users className="text-pink-500" size={28} />,
       title: "Multi-User System",
-      desc: "Role-based access for cashiers, managers and admins.",
+      desc: "Role-based access for cashiers, managers and admin.",
     },
     {
       icon: <Smartphone className="text-blue-500" size={28} />,
