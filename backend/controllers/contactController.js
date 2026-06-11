@@ -23,7 +23,7 @@ exports.createContact = async (req, res) => {
         secure: false,
         auth: {
           user: "mahersaba441@gmail.com",
-          pass: "YOUR_APP_PASSWORD",
+          pass: "fogdazexpaqopebw",
         },
         tls: {
           rejectUnauthorized: false,
