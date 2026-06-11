@@ -6,14 +6,15 @@ require("dotenv").config();
 const app = express();
 
 // middleware
-app.use(cors({
-  origin: [
-    "http://localhost:5173",
-    "https://your-frontend-domain.vercel.app"
-  ],
-  methods: ["GET", "POST", "DELETE", "PUT"],
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "https://techkaam-website.vercel.app"],
+    methods: ["GET", "POST", "DELETE", "PUT", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  }),
+);
+
+app.options("*", cors());
 
 app.use(express.json());
 
@@ -26,7 +27,8 @@ app.get("/", (req, res) => {
 const PORT = process.env.PORT || 5000;
 
 // DB CONNECT
-mongoose.connect(process.env.MONGO_URI)
+mongoose
+  .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("MongoDB Connected");
 
@@ -38,7 +40,6 @@ mongoose.connect(process.env.MONGO_URI)
     app.listen(PORT, () => {
       console.log("Server running on port " + PORT);
     });
-
   })
   .catch((err) => {
     console.log("Mongo Error:", err.message);
