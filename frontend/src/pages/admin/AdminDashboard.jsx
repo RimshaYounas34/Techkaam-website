@@ -13,7 +13,7 @@ function AdminDashboard() {
     const token = localStorage.getItem("token");
 
     // 🔐 SECURITY CHECK
-    if (!token) {
+    if (!token || token === "undefined" || token === "null") {
       navigate("/admin");
       return;
     }
@@ -37,7 +37,16 @@ function AdminDashboard() {
 
       const data = await res.json();
 
-      setMessages(data?.messages || []);
+      console.log("API RESPONSE:", data); // 🔥 DEBUG
+
+      // ✅ SAFE HANDLING (FIXED ERROR)
+      if (Array.isArray(data?.messages)) {
+        setMessages(data.messages);
+      } else if (Array.isArray(data)) {
+        setMessages(data);
+      } else {
+        setMessages([]);
+      }
     } catch (err) {
       console.log("API Error:", err);
       setMessages([]);
@@ -62,6 +71,7 @@ function AdminDashboard() {
         <h1 className="text-4xl font-bold text-slate-800">
           Admin Dashboard
         </h1>
+
         <p className="text-gray-500 mt-3">
           Manage Contact Messages
         </p>

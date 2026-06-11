@@ -23,20 +23,25 @@ function AdminLogin() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({ email, password }),
-        },
+        }
       );
 
       const data = await res.json();
 
-      if (data.success) {
-        // 🔐 TOKEN SAVE (IMPORTANT)
+      console.log("LOGIN RESPONSE:", data); // 🔥 DEBUG
+
+      if (data.success && data.token) {
+        // 🔐 CLEAN OLD TOKEN FIRST
+        localStorage.removeItem("token");
+
+        // 🔐 SAVE NEW TOKEN
         localStorage.setItem("token", data.token);
 
         setLoading(false);
 
         alert("Login successful ✔");
 
-        // 🚀 PROPER NAVIGATION (NO window.location)
+        // 🚀 NAVIGATE
         navigate("/admin/dashboard");
       } else {
         setLoading(false);
