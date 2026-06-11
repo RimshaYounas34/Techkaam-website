@@ -5,8 +5,8 @@ exports.createContact = async (req, res) => {
   try {
     const { name, email, phone, subject, message } = req.body;
 
-    // MongoDB save
-    const contact = new Contact({
+    // 1. SAVE TO DB (ALWAYS FIRST)
+    const contact = await Contact.create({
       name,
       email,
       phone,
@@ -14,43 +14,53 @@ exports.createContact = async (req, res) => {
       message,
     });
 
-    await contact.save();
+    // 2. EMAIL (SAFE - NEVER BREAK API)
+    try {
+      const transporter = nodemailer.createTransport({
+        service: "gmail",
+        host: "smtp.gmail.com",
+        port: 587,
+        secure: false,
+        auth: {
+          user: "mahersaba441@gmail.com",
+          pass: "YOUR_APP_PASSWORD",
+        },
+        tls: {
+          rejectUnauthorized: false,
+        },
+      });
 
-    // Gmail Config
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: "mahersaba441@gmail.com",
-        pass: "fogdazexpaqopebw",
-      },
-    });
+      await transporter.sendMail({
+        from: "mahersaba441@gmail.com",
+        to: "mahersaba441@gmail.com",
+        subject: `New Contact - ${subject || "No Subject"}`,
+        html: `
+          <h2>New Contact</h2>
+          <p><b>Name:</b> ${name}</p>
+          <p><b>Email:</b> ${email}</p>
+          <p><b>Phone:</b> ${phone}</p>
+          <p><b>Message:</b> ${message}</p>
+        `,
+      });
 
-    // Email Send
-    await transporter.sendMail({
-  from: "mahersaba441@gmail.com",
-  to: "mahersaba441@gmail.com",
-  subject: `New Contact Form - ${subject}`,
-  html: `
-    <h2>New Contact Message</h2>
+    } catch (mailError) {
+      console.log("EMAIL FAILED:", mailError.message);
+      // ❌ but API will NOT crash
+    }
 
-    <p><b>Name:</b> ${name}</p>
-    <p><b>Email:</b> ${email}</p>
-    <p><b>Phone:</b> ${phone}</p>
-    <p><b>Subject:</b> ${subject}</p>
-    <p><b>Message:</b> ${message}</p>
-  `,
-});
-
-    res.json({
+    // 3. SUCCESS RESPONSE (ALWAYS)
+    return res.status(200).json({
       success: true,
-      message: "Message saved and email sent successfully",
+      message: "Message saved successfully",
+      data: contact,
     });
-  } catch (error) {
-    console.log(error);
 
-    res.status(500).json({
+  } catch (error) {
+    console.log("CONTACT ERROR:", error.message);
+
+    return res.status(500).json({
       success: false,
-      error: error.message,
+      message: error.message,
     });
   }
 };

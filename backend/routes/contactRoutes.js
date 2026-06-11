@@ -11,13 +11,12 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// CREATE CONTACT
 router.post("/", async (req, res) => {
   try {
     const { name, email, phone, subject, message } = req.body;
 
-    // MongoDB Save
-    const data = await Contact.create({
+    // 1. SAVE TO MONGODB (IMPORTANT FIRST)
+    const savedMessage = await Contact.create({
       name,
       email,
       phone,
@@ -25,32 +24,34 @@ router.post("/", async (req, res) => {
       message,
     });
 
-    // Send Email
-    await transporter.sendMail({
+    // 2. SEND EMAIL (NON-BLOCKING SAFE WAY)
+    transporter.sendMail({
       from: "mahersaba441@gmail.com",
-      to: "mahersaba441@gmail.com", // jis gmail par message rece
-
+      to: "mahersaba441@gmail.com",
       subject: `New Contact Message - ${subject || "No Subject"}`,
       html: `
         <h2>New Contact Form Submission</h2>
-
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Subject:</strong> ${subject}</p>
-        <p><strong>Message:</strong> ${message}</p>
+        <p><b>Name:</b> ${name}</p>
+        <p><b>Email:</b> ${email}</p>
+        <p><b>Phone:</b> ${phone}</p>
+        <p><b>Subject:</b> ${subject}</p>
+        <p><b>Message:</b> ${message}</p>
       `,
+    }).catch((err) => {
+      console.log("Email Error:", err.message);
     });
 
-    res.json({
+    // 3. RESPONSE (ALWAYS SUCCESS IF SAVED)
+    return res.json({
       success: true,
-      data,
-      message: "Message saved and email sent successfully",
+      message: "Message saved successfully & email sent (if available)",
+      data: savedMessage,
     });
-  } catch (error) {
-    console.log(error);
 
-    res.status(500).json({
+  } catch (error) {
+    console.log("Contact API Error:", error.message);
+
+    return res.status(500).json({
       success: false,
       message: error.message,
     });
