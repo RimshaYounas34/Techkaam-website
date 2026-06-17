@@ -4,7 +4,8 @@ export default function ProtectedRoute({ children }) {
   const token = localStorage.getItem("token");
   const location = useLocation();
 
-  if (!token) {
+  // remove broken values
+  if (!token || token === "undefined" || token === "null") {
     return <Navigate to="/admin" replace state={{ from: location }} />;
   }
 
