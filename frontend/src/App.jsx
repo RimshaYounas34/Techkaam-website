@@ -30,8 +30,7 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 
 import ScrollToTop from "./components/ScrollToTop";
 import WhatsAppButton from "./components/WhatsAppButton";
-import ProtectedRoute from "./pages/admin/ProtectedRoute";
-
+import ProtectedRoute from "./components/ProtectedRoute";
 function App() {
   return (
     <BrowserRouter>
